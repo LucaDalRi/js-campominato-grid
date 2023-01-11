@@ -7,3 +7,20 @@
 // Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro
 // ed emetto un messaggio in console con il numero della cella cliccata.
 
+const bottoneDom = document.getElementById("bottone-sul-dom");
+
+const containerCelle = document.getElementById('container-celle');
+
+bottoneDom.addEventListener('click' , generaCelle);
+
+
+function generaCelle () {
+
+    for (let i = 0; i < 100; i++) {
+
+        containerCelle.innerHTML += '<div class="cella invisibile"></div>';
+        
+    }
+
+    console.log('cliccato!');
+}

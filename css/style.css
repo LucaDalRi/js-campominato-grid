@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: lightgrey;
+    text-align: center;
+    font-size: 2rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+
+    height: calc(100vh - 80px);
+    width: 100%;
+
+}
+
+#container-celle{
+
+    border: 1px dashed green;
+    width: 750px;
+    height: 750px;
+    margin: 50px auto;
+    
+
+}
+
+.cella{
+    border: 1px dashed green;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+
+}

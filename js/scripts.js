@@ -15,6 +15,34 @@ bottoneDom.addEventListener('click' , generaCelle);
 
 const numeriGenerati = [];
 
+let numeroInFila = 0;
+
+let counterCelle = 0;
+
+const arrayBombe = [];
+
+bottoneDom.addEventListener('click' , numeroUnoSedici);
+
+function numeroUnoSedici() {
+
+    let randomNumberSedici = getRandomNumber(1, 100);
+    
+    for (let i = 0; arrayBombe.length < 16; i++) {
+
+        randomNumberSedici = getRandomNumber(1, 100);
+
+        if (arrayBombe.includes(randomNumberSedici)) {
+
+            randomNumberSedici = getRandomNumber(1, 100);
+
+        }
+
+        arrayBombe.push(randomNumberSedici);
+
+    }
+
+    console.log('Numeri delle bombe ' + arrayBombe);
+}
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -57,6 +85,37 @@ function creaNuovaCella() {
     
     );
 
+    cella.addEventListener('click' ,
+
+    function () {
+        
+        for (let i = 0; i < 16; i++) {
+            
+            if (arrayBombe[i] == cella.innerText) {
+                
+                cella.classList.add('rosso');
+                
+                alert('Hai perso!');
+                
+                break;
+                
+            }
+            else if (counterCelle > 15) {
+                
+                alert('Hai vinto!');
+
+                break
+                
+            }
+            else {
+
+                cella.classList.add('verde');
+
+            }
+        }
+        
+    });
+
     let randomNumber = getRandomNumber(1, 100);
 
     while(numeriGenerati.includes(randomNumber)){
@@ -64,9 +123,15 @@ function creaNuovaCella() {
     }
 
     numeriGenerati.push(randomNumber);
-    
-    cella.append(randomNumber);
 
+    if(numeroInFila < 101) {
+
+        numeroInFila++;
+
+    }
+    
+    cella.append(numeroInFila);
+    
     if(randomNumber % 2 == 0){
         cella.classList.add('even');
     }
@@ -79,6 +144,7 @@ function creaNuovaCella() {
     return cella;
 
 };
+
 
 
 

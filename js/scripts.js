@@ -13,14 +13,75 @@ const containerCelle = document.getElementById('container-celle');
 
 bottoneDom.addEventListener('click' , generaCelle);
 
+const numeriGenerati = [];
+
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function generaCelle () {
 
+    containerCelle.innerHTML = '';  
+    
     for (let i = 0; i < 100; i++) {
+        
+        const nuovaCella = creaNuovaCella();
 
-        containerCelle.innerHTML += '<div class="cella invisibile"></div>';
+        containerCelle.append(nuovaCella);
         
     }
+    
+};
 
-    console.log('cliccato!');
-}
+function creaNuovaCella() {
+    
+    const cella = document.createElement('div');
+
+    cella.classList.add('cella');
+    
+    cella.addEventListener('click' ,
+    
+        function () {
+
+            console.log(cella.innerText);
+
+            if(this.classList.contains('clicked')){
+                this.classList.remove('clicked');
+            }
+            else{
+                this.classList.add('clicked');
+            }
+
+        }
+    
+    );
+
+    let randomNumber = getRandomNumber(1, 100);
+
+    while(numeriGenerati.includes(randomNumber)){
+        randomNumber = getRandomNumber(1, 100);
+    }
+
+    numeriGenerati.push(randomNumber);
+    
+    cella.append(randomNumber);
+
+    if(randomNumber % 2 == 0){
+        cella.classList.add('even');
+    }
+
+    else {
+        cella.classList.add('odd');
+    }
+
+
+    return cella;
+
+};
+
+
+
+
+
+
